@@ -127,8 +127,3 @@ uptimerobot-vs-sentry-rep/
 ├── package.json
 ├── tsconfig.json
 ├── README.md
-```
-
-## Notes
-
-This app is designed as a practical monitoring demo rather than a production-grade store backend. It is useful for showcasing how health checks, Sentry error capture, and a customer management workflow can be presented in a single app.
