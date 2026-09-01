@@ -3,6 +3,7 @@ import "./sentry";
 import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import * as Sentry from "@sentry/node";
+import path from "path";
 
 import userRoutes from "./routes/userRoutes";
 import { errorHandler } from "./middleware/errorHandler";
@@ -11,10 +12,16 @@ dotenv.config();
 
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = Number(process.env.PORT) || 5000;
 
 // Allow JSON requests
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "..", "public")));
+
+app.get("/bookshop", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 // Home route
 app.get("/", (req: Request, res: Response) => {
@@ -54,6 +61,10 @@ Sentry.setupExpressErrorHandler(app);
 // Our application error handler
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+export default app;

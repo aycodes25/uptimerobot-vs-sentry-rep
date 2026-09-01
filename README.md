@@ -1,148 +1,118 @@
-# UptimeRobot vs Sentry Monitoring Comparison
+# Orange Books Monitoring App
 
-A simple Node.js, Express, and TypeScript CRUD API built to practically compare **UptimeRobot** and **Sentry**.
+A small bookstore-themed monitoring demo built with Node.js, Express, TypeScript, and Sentry. The app combines a lightweight customer management CRUD API with a polished storefront dashboard and demonstrates how uptime and error monitoring can be displayed in a real-world product interface.
 
-## Project Purpose
+## What this project does
 
-This project was created to understand and compare two different monitoring tools:
+- Serves a bookstore landing page at `/bookshop`
+- Exposes customer CRUD routes for managing users
+- Includes a `/health` endpoint for uptime checks
+- Includes a `/test-error` route that triggers a controlled Sentry exception
+- Shows a visual frontend that mimics a store dashboard using an orange, white, and black theme
+- Demonstrates how Sentry error IDs and monitoring responses can be shown in a UI
 
-- **UptimeRobot** – monitors whether an application or API is online and available.
-- **Sentry** – monitors and captures errors happening inside an application.
-
-The project includes a working CRUD API, a health check endpoint for uptime monitoring, and a controlled error endpoint for Sentry testing.
-
----
-
-## Technologies Used
+## Tech stack
 
 - Node.js
-- TypeScript
 - Express.js
+- TypeScript
 - Sentry
-- UptimeRobot
-- Vercel
+- Vercel-ready server setup
 
----
+## Project features
 
-## Features
+- Customer create, read, update, and delete flow
+- Storefront catalog with real book cover images
+- Monitoring section for health and error testing
+- Error reporting with Sentry event IDs
+- Local development support and deployment-ready server config
 
-- Create User
-- Get All Users
-- Get Single User
-- Update User
-- Delete User
-- Health Check Endpoint
-- UptimeRobot Monitoring
-- Sentry Error Monitoring
-- Controlled Error Testing
-
----
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | Check that the API is running |
-| GET | `/health` | Health check for monitoring |
-| POST | `/users` | Create a user |
-| GET | `/users` | Get all users |
-| GET | `/users/:id` | Get a single user |
-| PUT | `/users/:id` | Update a user |
-| DELETE | `/users/:id` | Delete a user |
-| GET | `/test-error` | Trigger a controlled error for Sentry testing |
-
----
-
-## CRUD Example
-
-### Create User
-
-**POST `/users`**
-
-```json
-{
-  "name": "Tominiyi Ayomide",
-  "email": "tominiyi@example.com"
-}
-```
-
----
-
-## Project Setup
+## Local setup
 
 1. Clone the repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone <your-repo-url>
+cd uptimerobot-vs-sentry-rep
 ```
 
-2. Open the project folder
-
-```bash
-cd uptimerobot-vs-sentry
-```
-
-3. Install dependencies
+2. Install dependencies
 
 ```bash
 npm install
 ```
 
-4. Create environment variables
-
-Create a file called `.env` and add the following:
+3. Create a `.env` file in the project root
 
 ```env
 PORT=5000
-SENTRY_DSN=YOUR_SENTRY_DSN
+SENTRY_DSN=your_sentry_dsn_here
 ```
 
-Replace `YOUR_SENTRY_DSN` with your actual Sentry project DSN.
-
-5. Start the app in development mode
+4. Run the app in development mode
 
 ```bash
 npm run dev
 ```
 
-The application will run on:
+5. Open the app in the browser
 
 ```text
-http://localhost:5000
+http://localhost:5000/bookshop
 ```
 
-Test the health endpoint:
+## API routes
 
-```text
-http://localhost:5000/health
+| Method | Route | Description |
+| --- | --- | --- |
+| GET | `/` | App welcome route |
+| GET | `/health` | Health check endpoint |
+| GET | `/bookshop` | Storefront frontend |
+| GET | `/test-error` | Triggers a controlled Sentry exception |
+| GET | `/users` | Get all users |
+| POST | `/users` | Create user |
+| GET | `/users/:id` | Get a single user |
+| PUT | `/users/:id` | Update user |
+| DELETE | `/users/:id` | Delete user |
+
+## Example user payload
+
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com"
+}
 ```
 
-Test the controlled error endpoint:
-
-```text
-http://localhost:5000/test-error
-```
-
-## Build for Production
-
-Run:
+## Build and run
 
 ```bash
 npm run build
-```
-
-Then start the app:
-
-```bash
 npm start
 ```
 
----
+The app will run from the compiled build in `dist/server.js`.
 
-## Project Structure
+## Deployment
+
+The project includes a Vercel configuration in [vercel.json](vercel.json) and a serverless entry file in [api/index.js](api/index.js).
+
+To deploy:
+
+1. Push the repo to GitHub
+2. Import the project into Vercel
+3. Deploy the root folder
+4. Set the `SENTRY_DSN` environment variable in Vercel project settings
+
+## Project structure
 
 ```text
-uptimerobot-vs-sentry/
+uptimerobot-vs-sentry-rep/
+
+├── public/
+│   ├── app.js
+│   ├── index.html
+│   └── styles.css
 ├── src/
 │   ├── controllers/
 │   │   └── userController.ts
@@ -157,7 +127,8 @@ uptimerobot-vs-sentry/
 ├── package.json
 ├── tsconfig.json
 ├── README.md
+```
 
-<img width="600" height="400" alt="Screenshot 2026-09-01 090421" src="https://github.com/user-attachments/assets/e018eaa2-5ae5-4341-83e2-b0e29330c1f9" />
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/c6c2ab30-5b8e-42df-bb7e-089c097e8342" />
-<img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/e11bfeaa-9e1c-4f16-8915-4bf61f81e9c4" />
+## Notes
+
+This app is designed as a practical monitoring demo rather than a production-grade store backend. It is useful for showcasing how health checks, Sentry error capture, and a customer management workflow can be presented in a single app.

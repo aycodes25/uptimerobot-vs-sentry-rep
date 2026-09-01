@@ -8,9 +8,11 @@ export const errorHandler = (
 ) => {
   console.error("Error:", err.message);
 
+  const sentryEventId = (res as any).sentry ?? null;
+
   res.status(500).json({
     message: "Something went wrong",
     error: err.message,
-    sentryEventId: res.sentry,
+    sentryEventId,
   });
 };

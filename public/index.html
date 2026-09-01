@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orange Books</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="brand-mark">O</div>
+                <span>Orange Books</span>
+            </div>
+            <nav>
+                <a href="#catalog">Catalog</a>
+                <a href="#customers">Customers</a>
+                <a href="#api-status">API Status</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-card">
+                <span class="eyebrow">Fresh Reads</span>
+                <h1>Books that spark your next adventure.</h1>
+                <p>
+                    Discover bold stories, personal growth reads, and timeless classics.
+                    Orange Books helps readers browse, manage customers, and keep their store
+                    data flowing through a monitored backend.
+                </p>
+                <div class="cta-row">
+                    <button class="btn btn-primary" type="button"
+                        onclick="document.getElementById('customers').scrollIntoView({ behavior: 'smooth' })">Manage
+                        Customers</button>
+                    <button class="btn btn-secondary" type="button"
+                        onclick="document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' })">Explore
+                        Books</button>
+                </div>
+            </div>
+
+            <div class="stats-panel">
+                <h2>Store Snapshot</h2>
+                <div class="stat-row">
+                    <div class="stat-box"><strong id="user-count">0</strong><span>Customers</span></div>
+                    <div class="stat-box"><strong>24</strong><span>New Arrivals</span></div>
+                    <div class="stat-box"><strong>4.9</strong><span>Average Rating</span></div>
+                    <div class="stat-box"><strong>2k+</strong><span>Readers</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="catalog" class="section">
+            <div class="section-header">
+                <h2>Featured books</h2>
+            </div>
+            <div id="book-cards" class="cards"></div>
+        </section>
+
+        <section id="customers" class="section">
+            <div class="section-header">
+                <h2>Customer management</h2>
+            </div>
+            <div class="panel">
+                <form id="user-form">
+                    <div class="grid-2">
+                        <label>
+                            Full name
+                            <input type="text" id="name" placeholder="Jane Doe" required />
+                        </label>
+                        <label>
+                            Email address
+                            <input type="email" id="email" placeholder="jane@example.com" required />
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" type="submit">Save customer</button>
+                        <button class="btn btn-secondary" type="button" id="reset-form">Clear</button>
+                    </div>
+                </form>
+
+                <div id="form-status" class="status"></div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="api-status" class="section">
+            <div class="section-header">
+                <h2>Backend monitor</h2>
+            </div>
+            <div class="panel">
+                <div class="actions">
+                    <button class="btn btn-primary" type="button" id="check-health">Check health</button>
+                    <button class="btn btn-secondary" type="button" id="trigger-error">Trigger test error</button>
+                </div>
+
+                <div id="status-panel" class="status"></div>
+
+                <div id="sentry-card" class="sentry-card" hidden>
+                    <div class="sentry-header">
+                        <span class="sentry-badge">Sentry</span>
+                        <span class="sentry-status">Issue captured</span>
+                    </div>
+                    <h3 id="sentry-title">Unhandled error</h3>
+                    <p id="sentry-message">No error details yet.</p>
+
+                    <div class="code-box">
+                        <div class="code-header">src/server.ts: 33</div>
+                        <pre id="sentry-code">throw new Error("This is a controlled test error for Sentry");</pre>
+                    </div>
+
+                    <div class="event-row">
+                        <span>Event ID</span>
+                        <strong id="sentry-id">-</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
