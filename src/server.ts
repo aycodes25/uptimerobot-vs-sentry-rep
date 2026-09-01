@@ -25,9 +25,7 @@ app.get("/bookshop", (req: Request, res: Response) => {
 
 // Home route
 app.get("/", (req: Request, res: Response) => {
-  res.json({
-    message: "UptimeRobot vs Sentry Monitoring API is running",
-  });
+  res.redirect("/bookshop");
 });
 
 // Health check route
