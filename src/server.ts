@@ -1,5 +1,8 @@
+import "./sentry";
+
 import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
+import * as Sentry from "@sentry/node";
 
 import userRoutes from "./routes/userRoutes";
 import { errorHandler } from "./middleware/errorHandler";
@@ -29,7 +32,7 @@ app.get("/health", (req: Request, res: Response) => {
   });
 });
 
-// Controlled error route
+// Controlled Sentry test error
 app.get(
   "/test-error",
   (req: Request, res: Response, next: NextFunction) => {
@@ -41,10 +44,14 @@ app.get(
   }
 );
 
-// User routes
+// User CRUD routes
 app.use("/users", userRoutes);
 
-// Error handler MUST come after routes
+// Sentry error handler
+// This must come AFTER routes and BEFORE our custom error middleware
+Sentry.setupExpressErrorHandler(app);
+
+// Our application error handler
 app.use(errorHandler);
 
 app.listen(PORT, () => {
