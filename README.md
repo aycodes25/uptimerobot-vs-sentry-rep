@@ -157,7 +157,3 @@ uptimerobot-vs-sentry/
 ├── package.json
 ├── tsconfig.json
 ├── README.md
-
-<img width="600" height="600" alt="Screenshot 2026-09-01 123642" src="https://github.com/user-attachments/assets/f4b4081d-409f-45f9-854e-05366be9ae49" />
-<img width="600" height="600" alt="Screenshot 2026-09-01 123605" src="https://github.com/user-attachments/assets/a8c686f2-8382-4ee4-9769-48628747011e" />
-<img width="600" height="600" alt="Screenshot 2026-09-01 090421" src="https://github.com/user-attachments/assets/55e4f2f3-4392-4fdd-95c5-5d7a87a40a81" />
