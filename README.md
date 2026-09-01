@@ -1,5 +1,6 @@
 # Orange Books Monitoring App
 
+
 A small bookstore-themed monitoring demo built with Node.js, Express, TypeScript, and Sentry. The app combines a lightweight customer management CRUD API with a polished storefront dashboard and demonstrates how uptime and error monitoring can be displayed in a real-world product interface.
 
 ## What this project does
