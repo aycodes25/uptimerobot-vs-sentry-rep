@@ -105,6 +105,12 @@ To deploy:
 3. Deploy the root folder
 4. Set the `SENTRY_DSN` environment variable in Vercel project settings
 
+## Screenshot Displaying Sentry & UptimeRobot
+<img width="447" height="363" alt="image" src="https://github.com/user-attachments/assets/46dc218c-81c2-4151-8c35-73007941f552" /> <br/><br/>
+
+<img width="446" height="362" alt="image" src="https://github.com/user-attachments/assets/efdecf00-91ff-445d-8367-59b046d2d08c" />
+
+
 ## Project structure
 
 ```text
@@ -128,9 +134,3 @@ uptimerobot-vs-sentry-rep/
 ├── package.json
 ├── tsconfig.json
 ├── README.md
-
-
-<img width="447" height="363" alt="image" src="https://github.com/user-attachments/assets/46dc218c-81c2-4151-8c35-73007941f552" /> <br/><br/>
-
-<img width="446" height="362" alt="image" src="https://github.com/user-attachments/assets/efdecf00-91ff-445d-8367-59b046d2d08c" />
-
